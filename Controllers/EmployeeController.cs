@@ -21,14 +21,18 @@ namespace Employee_Management.Controllers
         public ActionResult AddEmployee(employee_table model)
         {
             employee_table obj = new employee_table();
-            obj.name = model.name;
-            obj.email = model.email;
-            obj.phone = model.phone;
-            obj.address = model.address;
-            obj.description = model.description;
+            if (ModelState.IsValid)
+            {
+                obj.name = model.name;
+                obj.email = model.email;
+                obj.phone = model.phone;
+                obj.address = model.address;
+                obj.description = model.description;
 
-            dbObj.employee_table.Add(obj);
-            dbObj.SaveChanges();
+                dbObj.employee_table.Add(obj);
+                dbObj.SaveChanges();
+            }
+            ModelState.Clear();
             return View(viewName: "Employee");
         }
     }

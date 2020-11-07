@@ -5,22 +5,29 @@
 }
 
 <h2>Add Employee</h2>
-
+<style>
+    .error {
+        color: red;
+    }
+</style>
 
 @using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
 {
 <div class="container">
-        <div class="form-group">
-            <label>Employee Name</label>
-            @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
-        </div>
+    <div class="form-group">
+        <label>Employee Name</label>
+        @Html.ValidationMessageFor(x => x.name, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+    </div>
         <div class="form-group">
             <label>Employee Email</label>
+            @Html.ValidationMessageFor(x => x.email, "", new { @class = "error" })
             @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
         </div>
 
         <div class="form-group">
             <label>Employee Phone</label>
+            @Html.ValidationMessageFor(x => x.phone, "", new { @class = "error" })
             @Html.TextBoxFor(x => x.phone, new { @class = "form-control" })
 
         </div>
