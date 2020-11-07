@@ -41,5 +41,16 @@ namespace Employee_Management.Controllers
             var result = dbObj.employee_table.ToList();
             return View(result);
         }
+
+        public ActionResult DeleteEmployee(int id)
+        {
+            var result = dbObj.employee_table.Where(x => x.id == id).First();
+            dbObj.employee_table.Remove(result);
+            dbObj.SaveChanges();
+
+            var list = dbObj.employee_table.ToList();
+            return View(viewName: "ViewEmployee", list);
+
+        }
     }
 }

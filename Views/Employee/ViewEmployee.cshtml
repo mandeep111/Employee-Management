@@ -1,0 +1,33 @@
+﻿@model List<Employee_Management.Context.employee_table>
+@{
+    ViewBag.Title = "ViewEmployee";
+}
+
+<h2>All Employees</h2>
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach(var emp in Model)
+    {
+        <tr>
+            <td>@emp.name</td>
+            <td>@emp.email</td>
+            <td>@emp.phone</td>
+            <td>@emp.address</td>
+            <td>@emp.description</td>
+            <td>
+                <a href="#" class="btn btn-info">Edit</a>
+                <a href="@Url.Action("DeleteEmployee", new { emp.id})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
