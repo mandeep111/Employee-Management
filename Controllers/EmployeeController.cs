@@ -35,5 +35,11 @@ namespace Employee_Management.Controllers
             ModelState.Clear();
             return View(viewName: "Employee");
         }
+
+        public ActionResult ViewEmployee()
+        {
+            var result = dbObj.employee_table.ToList();
+            return View(result);
+        }
     }
 }
