@@ -1,0 +1,42 @@
+﻿@model Employee_Management.Context.employee_table
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>Add Employee</h2>
+
+
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
+{
+<div class="container">
+        <div class="form-group">
+            <label>Employee Name</label>
+            @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Employee Email</label>
+            @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Employee Phone</label>
+            @Html.TextBoxFor(x => x.phone, new { @class = "form-control" })
+
+        </div>
+
+        <div class="form-group">
+            <label>Employee Address</label>
+            @Html.TextBoxFor(x => x.address, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label>Employee Description</label>
+            @Html.TextAreaFor(x => x.description, new { @class = "form-control", @rows = "3" })
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn bg-primary">Add Employee</button>
+        </div>
+</div>
+}

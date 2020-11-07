@@ -160,8 +160,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Context\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Context\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
