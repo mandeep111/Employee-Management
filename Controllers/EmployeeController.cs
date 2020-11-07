@@ -1,6 +1,7 @@
 ﻿using Employee_Management.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,9 +13,9 @@ namespace Employee_Management.Controllers
     {
         employee_dbEntities dbObj = new employee_dbEntities();
         // GET: Employee
-        public ActionResult Employee()
+        public ActionResult Employee(employee_table model)
         {
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -23,17 +24,26 @@ namespace Employee_Management.Controllers
             employee_table obj = new employee_table();
             if (ModelState.IsValid)
             {
+                obj.id = model.id;
                 obj.name = model.name;
                 obj.email = model.email;
                 obj.phone = model.phone;
                 obj.address = model.address;
                 obj.description = model.description;
 
-                dbObj.employee_table.Add(obj);
-                dbObj.SaveChanges();
+                if (model.id == 0) {
+                    dbObj.employee_table.Add(obj);
+                    dbObj.SaveChanges();
+                }
+                else
+                {
+                    dbObj.Entry(obj).State = EntityState.Modified;
+                    dbObj.SaveChanges();
+                }
+                
             }
             ModelState.Clear();
-            return View(viewName: "Employee");
+            return RedirectToAction("ViewEmployee");
         }
 
         public ActionResult ViewEmployee()

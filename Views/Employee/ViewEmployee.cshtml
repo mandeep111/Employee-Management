@@ -23,7 +23,15 @@
             <td>@emp.address</td>
             <td>@emp.description</td>
             <td>
-                <a href="#" class="btn btn-info">Edit</a>
+                <a href="@Url.Action("Employee", new
+                    {
+                        emp.id,
+                        emp.name,
+                        emp.email,
+                        emp.phone,
+                        emp.address,
+                        emp.description
+                    })" class="btn btn-info">Edit</a>
                 <a href="@Url.Action("DeleteEmployee", new { emp.id})" class="btn btn-danger">Delete</a>
             </td>
         </tr>
